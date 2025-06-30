@@ -13,8 +13,13 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
-    }
+        required: function () {
+            return !this.googleId;
+        },
+    },
+    googleId: {
+        type: String,
+    },
 });
 
 const UserModel = mongoose.model('users', UserSchema);

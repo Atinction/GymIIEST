@@ -1,12 +1,23 @@
+/* Page Background */
+body {
+  background-color: #333;;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main Container */
 .dashboard-container {
   max-width: 1000px;
   margin: 30px auto;
   padding: 30px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background: #1a1a1a; 
+  border-radius: 16px;
+  box-shadow: blue;
+  color: #f0f0f0; 
 }
 
+/* Header */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -15,23 +26,31 @@
 }
 
 .dashboard-header h2 {
-  font-size: 2.2rem;
-  color: #333;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: white;
 }
+
 
 .home-button {
   text-decoration: none;
   padding: 10px 18px;
-  background-color: #28a745;
+  background:  blue; 
   color: white;
   border-radius: 6px;
   font-weight: bold;
+  transition: background 0.3s ease;
 }
 
 .home-button:hover {
-  background-color: #1f7d36;
+  background: rgb(4, 4, 168);
+  transform: scale(1.05); 
 }
 
+/* Booking Form */
 .booking-form {
   display: flex;
   gap: 12px;
@@ -40,24 +59,35 @@
   flex-wrap: wrap;
 }
 
-.booking-form input, .booking-form button {
+.booking-form input,
+.booking-form select,
+.booking-form button {
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 6px;
   font-size: 0.95rem;
+  outline: none;
+}
+
+.booking-form input,
+.booking-form select {
+  background-color: #333;
+  color: white;
 }
 
 .booking-form button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  background: blue;
+  color: white;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .booking-form button:hover {
-  background-color: #0056b3;
+  background: rgb(4, 4, 168);
+  transform: scale(1.05);
 }
 
+/* Slot Cards */
 .slot-cards {
   display: flex;
   flex-wrap: wrap;
@@ -68,40 +98,42 @@
 
 .slot-card {
   padding: 16px;
-  border: 1px solid #ddd;
   border-radius: 10px;
   width: 210px;
-  background-color: #fafafa;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  background: linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255));
+  color: white;
   text-align: center;
-  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .slot-card h4 {
   margin-bottom: 8px;
-  color: #333;
 }
 
 .slot-card p {
-  color: #555;
+  margin: 0;
+  color: white;
+  font-weight: bold;
 }
 
 .slot-card:hover {
-  background-color: #f0f8ff;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(256, 256, 256, 0.4);
 }
 
+/* Status Text */
 .status-text {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-top: 30px;
   font-weight: bold;
 }
 
 .active-status {
-  color: green;
+  color: #00ff7f; 
 }
 
 .inactive-status {
-  color: red;
+  color: #ff4c4c; 
 }

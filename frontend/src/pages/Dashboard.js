@@ -9,6 +9,7 @@ function Dashboard() {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [gender, setGender] = useState("");
   const [slots, setSlots] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
@@ -19,21 +20,28 @@ function Dashboard() {
       alert("User not logged in");
       return;
     }
-    if (!date || !startTime || !endTime) {
-      alert("Please fill all fields");
+    if (!date || !startTime || !endTime || !gender) {
+      alert("Please fill all fields including gender");
       return;
     }
     try {
-      await axios.post("http://localhost:8080/api/slots/book-slot", {
+      const response = await axios.post("http://localhost:8080/api/slots/book-slot", {
         userId,
         date,
         startTime,
         endTime,
+        gender,
       });
+
+      alert(response.data.message);
       fetchSlots();
     } catch (err) {
       console.error("Error booking slot:", err);
-      alert("Failed to book slot");
+      if (err.response && err.response.data && err.response.data.message) {
+        alert(err.response.data.message);
+      } else {
+        alert("Failed to book slot");
+      }
     }
   };
 
@@ -41,6 +49,7 @@ function Dashboard() {
     if (!userId) return;
     try {
       const res = await axios.get(`http://localhost:8080/api/slots/my-slots/${userId}`);
+      // console.log("Fetched slots: ", res.data);
       setSlots(res.data);
     } catch (err) {
       console.error("Error fetching slots:", err);
@@ -73,13 +82,20 @@ function Dashboard() {
         <h2>
           <FaDumbbell style={{ marginRight: "10px" }} /> Gym Dashboard
         </h2>
-        <Link to="/" className="home-button">🏠 Home</Link>
+        <Link to="/" className="home-button"> Back To Home </Link>
       </div>
 
       <div className="booking-form">
         <input type="date" onChange={(e) => setDate(e.target.value)} />
         <input type="time" onChange={(e) => setStartTime(e.target.value)} />
         <input type="time" onChange={(e) => setEndTime(e.target.value)} />
+
+        <select onChange={(e) => setGender(e.target.value)} defaultValue="">
+          <option value="" disabled>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
         <button onClick={bookSlot}>📅 Book Slot</button>
       </div>
 
@@ -98,7 +114,7 @@ function Dashboard() {
       <h3 className="status-text">
         Status:{" "}
         <span className={isActive ? "active-status" : "inactive-status"}>
-          {isActive ? "🟢 Active in Gym" : "🔴 Not Active"}
+          {isActive ? " Active in Gym" : " Not Active"}
         </span>
       </h3>
     </div>

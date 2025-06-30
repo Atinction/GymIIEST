@@ -96,7 +96,7 @@ const FitnessPlanner = () => {
             </Paper>
 
             {result && (
-                <Paper elevation={3} sx={{ mt: 4, p: 3, bgcolor: '#f4f4f4', borderRadius: 2 }}>
+                <Paper elevation={3} sx={{ mt: 4, p: 3, bgcolor: 'linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255))', borderRadius: 2 }}>
                     <Typography variant="h5" gutterBottom>✨ Your Personalized Plan</Typography>
                     <Divider sx={{ mb: 2 }} />
 

@@ -293,24 +293,35 @@ export default function ExercisePredictor() {
                 }}
             >
                 <Typography
-                    variant="h4"
-                    align="center"
-                    gutterBottom
-                    sx={{ color: "#82d8d8", fontWeight: "bold" }}
-                >
-                    Exercise Predictor
-                </Typography>
+                  variant="h4"
+                  align="center"
+                  gutterBottom
+               sx={{
+                background: "linear-gradient(65deg,rgb(81, 156, 223), rgb(59, 4, 255))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontWeight: "bold"
+                   }}
+            >
+                  Exercise Predictor
+               </Typography>
+
 
                 <Tabs
-                    value={tab}
-                    onChange={(e, newValue) => setTab(newValue)}
-                    centered
-                    textColor="secondary"
-                    indicatorColor="secondary"
-                    sx={{ mb: 3 }}
-                >
-                    <Tab label="BMI Calculator" />
-                </Tabs>
+                   value={tab}
+                   onChange={(e, newValue) => setTab(newValue)}
+                   centered
+                   indicatorColor="primary"
+                    sx={{
+                        mb: 3,
+                         '& .MuiTab-root': { color: 'white' },
+                         '& .Mui-selected': { color: 'white' },
+                        '& .MuiTabs-indicator': { backgroundColor: 'white' }
+                       }}
+                    >
+                 <Tab label="BMI Calculator" />
+                 </Tabs>
+
 
                 <Box mb={3} display="flex" justifyContent="center">
                     <ToggleButtonGroup
@@ -362,21 +373,24 @@ export default function ExercisePredictor() {
                     />
                 </Box>
 
-                <Button
-                    variant="contained"
-                    fullWidth
-                    size="large"
-                    onClick={calculateBMI}
-                    sx={{
-                        backgroundColor: "#f48fb1",
-                        color: "#000",
-                        fontWeight: "bold",
-                        borderRadius: 3,
-                        ":hover": { backgroundColor: "#f06292" },
-                    }}
-                >
-                    Calculate BMI
-                </Button>
+               <Button
+                   variant="contained"
+                   fullWidth
+                   size="large"
+                   onClick={calculateBMI}
+                   sx={{
+                      background: "linear-gradient(65deg, rgb(81, 156, 223), rgb(59, 4, 255))",
+                      color: "#000",
+                      fontWeight: "bold",
+                      borderRadius: 3,
+                     ":hover": {
+                       background: "linear-gradient(65deg, rgb(50, 120, 190), rgb(40, 0, 200))"
+                 }
+                   }}
+                   >
+                     Calculate BMI
+               </Button>
+
 
                 {bmi && (
                     <Typography

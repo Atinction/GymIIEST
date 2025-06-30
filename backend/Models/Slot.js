@@ -1,55 +1,77 @@
-const { getDB } = require("./db");
+const mongoose = require("mongoose");
+
+const slotSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  date: { type: String, required: true },
+  startTime: { type: String, required: true },
+  endTime: { type: String, required: true },
+  gender: { type: String, required: true },
+});
+
+const SlotModel = mongoose.model("Slot", slotSchema);
+
+const isWithinTimeRange = (start, end, target) => {
+  return target >= start && target <= end;
+};
+
+const gymTimings = {
+  Male: [
+    { start: "07:00", end: "09:00" },
+    { start: "19:00", end: "21:00" },
+  ],
+  Female: [
+    { start: "09:30", end: "11:00" },
+    { start: "17:00", end: "18:30" },
+  ],
+};
 
 const Slot = {
-  // Book a slot after checking total slot count for that time
-  async bookSlot(userId, date, startTime, endTime) {
-    const db = getDB();
+  async bookSlot(userId, date, startTime, endTime, gender) {
+    const slotsAtSameTime = await SlotModel.find({ date, startTime });
 
-    // Count how many students have already booked this specific date+time slot
-    const slotCount = await db.collection("slots").countDocuments({
-      date,
-      startTime,
-      endTime,
-    });
-
-    if (slotCount >= 30) {
-      return { success: false, message: "Maximum slot capacity reached for this slot" };
+    if (slotsAtSameTime.length >= 30) {
+      return { success: false, message: "Slot is full. Please choose another time." };
     }
 
-    // Book slot (store userId as string)
-    const result = await db.collection("slots").insertOne({
-      userId, // string — no ObjectId()
-      date,
-      startTime,
-      endTime,
-      createdAt: new Date(),
+    // Normalize gender value
+    const normalizedGender = gender.charAt(0).toUpperCase() + gender.slice(1).toLowerCase();
+    const availableTimings = gymTimings[normalizedGender];
+
+    if (!availableTimings) {
+      return { success: false, message: "Invalid gender or no timings available for the provided gender." };
+    }
+
+    const isAllowed = availableTimings.some((slot) => {
+      return isWithinTimeRange(slot.start, slot.end, startTime);
     });
 
-    return { success: true, insertedId: result.insertedId };
+    if (!isAllowed) {
+      return { success: false, message: "Selected time is outside your allowed gym timing." };
+    }
+
+    const newSlot = new SlotModel({ userId, date, startTime, endTime, gender: normalizedGender });
+    const savedSlot = await newSlot.save();
+
+    return { success: true, insertedId: savedSlot._id };
   },
 
-  // Fetch slots booked by a user
   async getUserSlots(userId) {
-    const db = getDB();
-    const slots = await db.collection("slots").find({ userId }).toArray();
-    return slots;
+    return await SlotModel.find({ userId });
   },
 
-  // Check if user is currently active in gym
   async isUserActive(userId) {
-    const db = getDB();
     const now = new Date();
-    const dateStr = now.toISOString().split("T")[0];
-    const timeStr = now.toTimeString().substring(0, 5);
+    const userSlots = await SlotModel.find({ userId });
 
-    const slot = await db.collection("slots").findOne({
-      userId,
-      date: dateStr,
-      startTime: { $lte: timeStr },
-      endTime: { $gte: timeStr },
-    });
+    for (let slot of userSlots) {
+      const slotEndTime = new Date(`${slot.date}T${slot.startTime}`);
+      slotEndTime.setMinutes(slotEndTime.getMinutes() + 45);
 
-    return !!slot;
+      if (now >= new Date(`${slot.date}T${slot.startTime}`) && now <= slotEndTime) {
+        return true;
+      }
+    }
+    return false;
   },
 };
 

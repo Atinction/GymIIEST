@@ -6,7 +6,7 @@ require('dotenv').config();
 const AuthRouter = require('./Routes/AuthRouter');
 const ProductRouter = require('./Routes/ProductRouter');
 const FitnessRouter = require('./Routes/FitnessRouter');
-const SlotRouter = require('./Routes/SlotRouter');  // ✅ Added this
+const SlotRouter = require('./Routes/SlotRouter');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -39,7 +39,7 @@ app.get('/ping', (req, res) => {
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/api/predict-plan', FitnessRouter);
-app.use('/api/slots', SlotRouter); // ✅ Added this line
+app.use('/api/slots', SlotRouter);
 
 // Start Server
 app.listen(PORT, () => {
