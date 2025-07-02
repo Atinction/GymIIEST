@@ -1,6 +1,6 @@
 /* Page Background */
 body {
-  background-color: #333;;
+  background-color: #333;
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,10 +11,10 @@ body {
   max-width: 1000px;
   margin: 30px auto;
   padding: 30px;
-  background: #1a1a1a; 
+  background: #1a1a1a;
   border-radius: 16px;
   box-shadow: blue;
-  color: #f0f0f0; 
+  color: #f0f0f0;
 }
 
 /* Header */
@@ -34,11 +34,10 @@ body {
   color: white;
 }
 
-
 .home-button {
   text-decoration: none;
   padding: 10px 18px;
-  background:  blue; 
+  background: blue;
   color: white;
   border-radius: 6px;
   font-weight: bold;
@@ -47,7 +46,7 @@ body {
 
 .home-button:hover {
   background: rgb(4, 4, 168);
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 /* Booking Form */
@@ -104,6 +103,7 @@ body {
   color: white;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -122,6 +122,47 @@ body {
   box-shadow: 0 8px 20px rgba(256, 256, 256, 0.4);
 }
 
+/* Delete Button inside Slot Card */
+.slot-card .delete-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slot-card .delete-btn:hover .delete-icon {
+  transform: scale(1.15);
+}
+
+/* Dustbin icon image */
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+.equipment-btn {
+  display: block;
+  margin: 8px auto 0;
+  background: transparent;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.equipment-btn:hover {
+  background: transparent;
+}
+
 /* Status Text */
 .status-text {
   text-align: center;
@@ -131,9 +172,9 @@ body {
 }
 
 .active-status {
-  color: #00ff7f; 
+  color: #00ff7f;
 }
 
 .inactive-status {
-  color: #ff4c4c; 
+  color: #ff4c4c;
 }

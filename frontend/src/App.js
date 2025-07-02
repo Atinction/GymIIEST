@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -18,13 +18,32 @@ import FitnessPlanner from './pages/FitnessPlanner';
 import Dashboard from "./pages/Dashboard";
 
 const App = () => {
+  const location = useLocation();
+  
+  // True for Main, Login, Signup
+  const isMinimalHeaderPage =
+    location.pathname === '/' ||
+    location.pathname === '/main' ||
+    location.pathname === '/login' ||
+    location.pathname === '/signup';
+
+  // Footer visible on all except Main, Login, Signup
+  const shouldShowFooter = !(
+    location.pathname === '/' ||
+    location.pathname === '/main' ||
+    location.pathname === '/login' ||
+    location.pathname === '/signup'
+  );
+
   return (
     <>
-      <Header />
+      {/* Header always visible */}
+      <Header isMainPage={isMinimalHeaderPage} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/developers" element={<Developers />} />
@@ -38,7 +57,7 @@ const App = () => {
       </Routes>
 
       <GoToTop />
-      <Footer />
+      {shouldShowFooter && <Footer />}
     </>
   );
 };

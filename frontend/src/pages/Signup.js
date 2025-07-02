@@ -50,7 +50,7 @@ const Signup = () => {
         localStorage.setItem('loggedInUser', name);
         localStorage.setItem('userId', userId);
         handleSuccess('Registered with Google successfully');
-        setTimeout(() => navigate('/'), 1000);
+        setTimeout(() => navigate('/Home'), 1000);
       } else {
         handleError(message);
       }

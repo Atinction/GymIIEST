@@ -1,11 +1,24 @@
+// SlotCard.js (No changes needed, as it's a display component)
 import React from "react";
-import "../pages/Dashboard.css"; 
+import "../pages/Dashboard.css";
 
-function SlotCard({ date, startTime, endTime }) {
+function SlotCard({ date, startTime, endTime, onDelete, slotId }) {
   return (
     <div className="slot-card">
-      <h4>{date}</h4>
-      <p>{startTime} - {endTime}</p>
+      <p>Date: {date}</p>
+      <p>Start: {startTime}</p>
+      <p>End: {endTime}</p>
+      <button
+        className="delete-btn"
+        onClick={() => onDelete(slotId)}
+        title="Delete Slot"
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/delete.png`}
+          alt="Delete"
+          className="delete-icon"
+        />
+      </button>
     </div>
   );
 }

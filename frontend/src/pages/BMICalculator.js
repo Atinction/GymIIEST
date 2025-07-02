@@ -261,7 +261,7 @@ const BMICalculator = () => {
                         )}
 
                         <Button
-                            onClick={() => navigate("/")}
+                            onClick={() => navigate("/Home")}
                             fullWidth
                             variant="outlined"
                             sx={{ mt: 4, borderColor: "#c084fc", color: "#c084fc", boxShadow: "0 0 10px #c084fc" }}

@@ -31,7 +31,7 @@ const Login = () => {
         localStorage.setItem('loggedInUser', name);
         localStorage.setItem('userId', userId);
         handleSuccess(message);
-        setTimeout(() => navigate('/'), 500);
+        setTimeout(() => navigate('/Home'), 500);
       } else {
         handleError(message);
       }
@@ -53,7 +53,7 @@ const Login = () => {
         localStorage.setItem('loggedInUser', name);
         localStorage.setItem('userId', userId);
         handleSuccess('Logged in with Google successfully');
-        setTimeout(() => navigate('/'), 1000);
+        setTimeout(() => navigate('/Home'), 1000);
       } else {
         handleError(message);
       }

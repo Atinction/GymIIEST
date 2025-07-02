@@ -32,12 +32,11 @@ function Dashboard() {
         endTime,
         gender,
       });
-
       alert(response.data.message);
       fetchSlots();
     } catch (err) {
       console.error("Error booking slot:", err);
-      if (err.response && err.response.data && err.response.data.message) {
+      if (err.response?.data?.message) {
         alert(err.response.data.message);
       } else {
         alert("Failed to book slot");
@@ -49,10 +48,25 @@ function Dashboard() {
     if (!userId) return;
     try {
       const res = await axios.get(`http://localhost:8080/api/slots/my-slots/${userId}`);
-      // console.log("Fetched slots: ", res.data);
       setSlots(res.data);
     } catch (err) {
       console.error("Error fetching slots:", err);
+    }
+  };
+
+  const handleDeleteSlot = async (slotId) => {
+    if (!userId) return;
+    if (!window.confirm("Are you sure you want to delete this slot?")) return;
+
+    try {
+      const res = await axios.delete("http://localhost:8080/api/slots/delete-slot", {
+        data: { slotId, userId },
+      });
+      alert(res.data.message);
+      fetchSlots();
+    } catch (err) {
+      console.error("Error deleting slot:", err);
+      alert("Failed to delete slot");
     }
   };
 
@@ -82,20 +96,18 @@ function Dashboard() {
         <h2>
           <FaDumbbell style={{ marginRight: "10px" }} /> Gym Dashboard
         </h2>
-        <Link to="/" className="home-button"> Back To Home </Link>
+        <Link to="/Home" className="home-button"> Back To Home </Link>
       </div>
 
       <div className="booking-form">
         <input type="date" onChange={(e) => setDate(e.target.value)} />
         <input type="time" onChange={(e) => setStartTime(e.target.value)} />
         <input type="time" onChange={(e) => setEndTime(e.target.value)} />
-
         <select onChange={(e) => setGender(e.target.value)} defaultValue="">
           <option value="" disabled>Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-
         <button onClick={bookSlot}>📅 Book Slot</button>
       </div>
 
@@ -107,6 +119,8 @@ function Dashboard() {
             date={slot.date}
             startTime={slot.startTime}
             endTime={slot.endTime}
+            slotId={slot._id}
+            onDelete={handleDeleteSlot}
           />
         ))}
       </div>
