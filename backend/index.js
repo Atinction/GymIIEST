@@ -7,6 +7,7 @@ const AuthRouter = require('./Routes/AuthRouter');
 const ProductRouter = require('./Routes/ProductRouter');
 const FitnessRouter = require('./Routes/FitnessRouter');
 const SlotRouter = require('./Routes/SlotRouter');
+const gymEquipmentRoutes = require("./Routes/GymEquipmentRouter")
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -40,6 +41,7 @@ app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/api/predict-plan', FitnessRouter);
 app.use('/api/slots', SlotRouter);
+app.use("/api/equipment", gymEquipmentRoutes);
 
 // Start Server
 app.listen(PORT, () => {

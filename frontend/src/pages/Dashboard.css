@@ -1,180 +1,462 @@
 /* Page Background */
 body {
-  background-color: #333;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Main Container */
 .dashboard-container {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 30px;
-  background: #1a1a1a;
-  border-radius: 16px;
-  box-shadow: blue;
-  color: #f0f0f0;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 16px;
+    box-shadow: blue;
+    color: #f0f0f0;
 }
 
 /* Header */
 .dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
 .dashboard-header h2 {
-  font-size: 2.5rem;
-  background: linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: white;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: white;
 }
 
 .home-button {
-  text-decoration: none;
-  padding: 10px 18px;
-  background: blue;
-  color: white;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background 0.3s ease;
+    text-decoration: none;
+    padding: 10px 18px;
+    background: blue;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
 .home-button:hover {
-  background: rgb(4, 4, 168);
-  transform: scale(1.05);
+    background: rgb(4, 4, 168);
+    transform: scale(1.05);
 }
 
 /* Booking Form */
 .booking-form {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .booking-form input,
 .booking-form select,
 .booking-form button {
-  padding: 10px 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  outline: none;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
 }
 
 .booking-form input,
 .booking-form select {
-  background-color: #333;
-  color: white;
+    background-color: #333;
+    color: white;
 }
 
 .booking-form button {
-  background: blue;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+    background: blue;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .booking-form button:hover {
-  background: rgb(4, 4, 168);
-  transform: scale(1.05);
+    background: rgb(4, 4, 168);
+    transform: scale(1.05);
 }
 
 /* Slot Cards */
 .slot-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  justify-content: center;
-  margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .slot-card {
-  padding: 16px;
-  border-radius: 10px;
-  width: 210px;
-  background: linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255));
-  color: white;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 16px;
+    border-radius: 10px;
+    width: 210px;
+    background: linear-gradient(45deg, rgb(47, 137, 216), rgb(59, 4, 255));
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: space-between; /* Pushes content and buttons to ends */
+    min-height: 180px; /* Ensures enough height for content and buttons */
 }
 
 .slot-card h4 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .slot-card p {
-  margin: 0;
-  color: white;
-  font-weight: bold;
+    margin: 0;
+    color: white;
+    font-weight: bold;
 }
 
 .slot-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(256, 256, 256, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(256, 256, 256, 0.4);
 }
 
 /* Delete Button inside Slot Card */
 .slot-card .delete-btn {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    top: 60%; 
+    right: 100px;
+    transform: translateY(-50%); 
+    background: transparent;
+    border: none;
+    color: white;
+    border-radius: 70%;
+    padding: 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    line-height: 1;
+    width: 40px; 
+    height: 40px;
 }
 
-.slot-card .delete-btn:hover .delete-icon {
-  transform: scale(1.15);
+.slot-card .delete-btn:hover {
+    background: rgba(255, 255, 255, 0.2); 
 }
-
-/* Dustbin icon image */
-.delete-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  transition: transform 0.2s ease;
+.slot-card .delete-icon {
+    width: 20px;
+    height: 20px; 
+    display: block;
 }
-.equipment-btn {
-  display: block;
-  margin: 8px auto 0;
-  background: transparent;
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.equipment-btn:hover {
-  background: transparent;
-}
-
-/* Status Text */
 .status-text {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-top: 30px;
-  font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    font-weight: bold;
 }
 
 .active-status {
-  color: #00ff7f;
+    color: #00ff7f;
 }
 
 .inactive-status {
-  color: #ff4c4c;
+    color: #ff4c4c;
+}
+.book-equipment-btn {
+    background: #007bff; 
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: auto; /* Pushes button to the bottom */
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: calc(100% - 20px); /* Adjust width to fit card with padding */
+    margin-left: 10px; /* Align with card content */
+    margin-right: 10px;
+}
+
+.book-equipment-btn:hover {
+    background: #0056b3; /* Darker blue on hover */
+    transform: scale(1.03);
+}
+
+/* Styles for the custom confirmation modal (used in Dashboard.js and EquipmentBookingModal.js) */
+.custom-confirm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.custom-confirm-modal-content {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    text-align: center;
+    color: white;
+    max-width: 400px;
+    width: 90%;
+}
+
+.custom-confirm-modal-content p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.custom-confirm-modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.custom-confirm-modal-content button.confirm-yes {
+    background: #4CAF50; /* Green */
+    color: white;
+}
+
+.custom-confirm-modal-content button.confirm-yes:hover {
+    background: #45a049;
+}
+
+.custom-confirm-modal-content button.confirm-no {
+    background: #f44336; /* Red */
+    color: white;
+}
+
+.custom-confirm-modal-content button.confirm-no:hover {
+    background: #da190b;
+}
+
+/* Equipment Booking Modal Specific CSS */
+.equipment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Lower than custom-confirm-modal-overlay if both appear */
+}
+
+.equipment-modal-content {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    color: #f0f0f0;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 800px;
+    position: relative;
+}
+
+.equipment-modal-content h2 {
+    font-size: 2rem;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.equipment-modal-content p {
+    margin-bottom: 10px;
+}
+
+.modal-message {
+    background-color: #ffc107;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.user-booked-equipment {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    border: 1px solid #3a3a3a;
+}
+
+.user-booked-equipment h3 {
+    margin-top: 0;
+    color: #00ff7f;
+}
+
+.booked-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3a3a3a;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.delete-equipment-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+}
+
+.delete-equipment-btn:hover {
+    background-color: #c82333;
+}
+
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.equipment-card {
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    border: 2px solid transparent; /* Default border */
+    position: relative;
+}
+
+.equipment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
+}
+
+.equipment-card.selected {
+    border-color: #007bff; /* Highlight selected */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+}
+
+.equipment-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #333;
+}
+
+.equipment-card.user-booked {
+    border-color: #00ff7f; /* Green border for already booked by user */
+    box-shadow: 0 0 15px rgba(0, 255, 127, 0.7);
+}
+
+.equipment-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.equipment-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.equipment-remaining {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.booked-indicator {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #00ff7f;
+    color: #1a1a1a;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.modal-book-btn, .modal-close-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.modal-book-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: white;
+}
+
+.modal-book-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #003d80);
+    transform: scale(1.03);
+}
+
+.modal-close-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.modal-close-btn:hover {
+    background: #5a6268;
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .equipment-modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+    .equipment-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .equipment-image {
+        width: 80px;
+        height: 80px;
+    }
+    .modal-book-btn, .modal-close-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
 }

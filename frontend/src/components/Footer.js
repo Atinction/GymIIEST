@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <Box sx={{ bgcolor: "black", padding: "40px 0", mt: 4 }}>
+    <Box sx={{ bgcolor: "#000000", padding: "40px 0", mt: 0 }}>
       <Container maxWidth="lg">
         <Grid container spacing={6} justifyContent="space-between" alignItems="flex-start">
           <Grid item xs={12} md={3} sx={{ textAlign: { xs: "center", md: "left" } }}>
@@ -50,7 +50,7 @@ const Footer = () => {
             </Typography>
           </Grid>
 
-          {/* Newsletter & Follow Us combined cleanly */}
+          {/* Newsletter & Follow Us */}
           <Grid item xs={12} md={6}>
             <Box
               sx={{
