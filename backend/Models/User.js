@@ -20,7 +20,31 @@ const UserSchema = new Schema({
     googleId: {
         type: String,
     },
-});
+    mobile: {
+        type: String,
+        default: '',
+    },
+    height: {
+        type: Number, // in cm
+        default: 0,
+    },
+    weight: {
+        type: Number, // in kg
+        default: 0,
+    },
+    address: {
+        type: String,
+        default: '',
+    },
+    active: {
+        type: Boolean,
+        default: true,
+    },
+    profilePicture: {
+        type: String,
+        default: '', // e.g., 'uploads/default-avatar.png'
+    }
+}, { timestamps: true });
 
 const UserModel = mongoose.model('users', UserSchema);
 module.exports = UserModel;

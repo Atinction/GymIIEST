@@ -1,4 +1,3 @@
-// SlotRouter.js (No changes needed, as it routes to SlotController)
 const express = require("express");
 const router = express.Router();
 const SlotController = require("../Controllers/SlotControllers");

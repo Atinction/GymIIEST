@@ -177,19 +177,17 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: auto; /* Pushes button to the bottom */
+    margin-top: auto;
     transition: background 0.3s ease, transform 0.2s ease;
-    width: calc(100% - 20px); /* Adjust width to fit card with padding */
-    margin-left: 10px; /* Align with card content */
+    width: calc(100% - 20px);
+    margin-left: 10px;
     margin-right: 10px;
 }
 
 .book-equipment-btn:hover {
-    background: #0056b3; /* Darker blue on hover */
+    background: #0056b3;
     transform: scale(1.03);
 }
-
-/* Styles for the custom confirmation modal (used in Dashboard.js and EquipmentBookingModal.js) */
 .custom-confirm-modal-overlay {
     position: fixed;
     top: 0;
@@ -200,7 +198,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it's on top */
+    z-index: 1000;
 }
 
 .custom-confirm-modal-content {
@@ -230,7 +228,7 @@ body {
 }
 
 .custom-confirm-modal-content button.confirm-yes {
-    background: #4CAF50; /* Green */
+    background: #4CAF50;
     color: white;
 }
 
@@ -239,15 +237,13 @@ body {
 }
 
 .custom-confirm-modal-content button.confirm-no {
-    background: #f44336; /* Red */
+    background: #f44336;
     color: white;
 }
 
 .custom-confirm-modal-content button.confirm-no:hover {
     background: #da190b;
 }
-
-/* Equipment Booking Modal Specific CSS */
 .equipment-modal-overlay {
     position: fixed;
     top: 0;
@@ -258,7 +254,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999; /* Lower than custom-confirm-modal-overlay if both appear */
+    z-index: 999;
 }
 
 .equipment-modal-content {
@@ -360,7 +356,7 @@ body {
 }
 
 .equipment-card.selected {
-    border-color: #007bff; /* Highlight selected */
+    border-color: #007bff;
     box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
 }
 
@@ -371,7 +367,7 @@ body {
 }
 
 .equipment-card.user-booked {
-    border-color: #00ff7f; /* Green border for already booked by user */
+    border-color: #00ff7f;
     box-shadow: 0 0 15px rgba(0, 255, 127, 0.7);
 }
 

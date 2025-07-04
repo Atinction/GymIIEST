@@ -1,4 +1,3 @@
-// SlotCard.js (No changes needed, as it's a display component)
 import React from "react";
 import "../pages/Dashboard.css";
 

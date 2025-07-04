@@ -1,73 +1,22 @@
 import React, { useState } from 'react';
 import {
     Typography,
-    Avatar,
-    Button,
-    Switch,
     Box,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    TextField,
-    DialogActions,
     Snackbar,
     IconButton,
-    useTheme
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useNavigate } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/ProductCard'; // Assuming this path is correct
 
 const Home = () => {
     const navigate = useNavigate();
-    //const theme = useTheme();
 
-    const [profile, setProfile] = useState({
-        name: 'John Doe',
-        mobile: '9876543210',
-        height: '175',
-        weight: '70',
-        address: 'Howrah, West Bengal',
-        active: true,
-        photo: null
-    });
-
-    const [open, setOpen] = useState(false);
     const [logoutOpen, setLogoutOpen] = useState(false);
 
-    const handleEditOpen = () => setOpen(true);
-    const handleEditClose = () => setOpen(false);
-
-    const handleProfileChange = (e) => {
-        const { name, value } = e.target;
-        setProfile((prev) => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleToggleActive = () => {
-        setProfile((prev) => ({
-            ...prev,
-            active: !prev.active
-        }));
-    };
-
-    const handlePhotoUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setProfile((prev) => ({
-                    ...prev,
-                    photo: reader.result
-                }));
-            };
-            reader.readAsDataURL(file);
-        }
-    };
+    // Profile section removed as per requirements
 
     const handleLogout = () => {
         setLogoutOpen(true);
@@ -115,7 +64,6 @@ const Home = () => {
         }
     ];
 
-
     return (
         <Box sx={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
             {/* Background Video */}
@@ -156,85 +104,33 @@ const Home = () => {
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
                     padding: { xs: '1rem', md: '2rem' },
-                    gap: { xs: '2rem', md: '2rem' }
+                    gap: { xs: '2rem', md: '2rem' },
+                    justifyContent: 'center', // Center content horizontally
+                    alignItems: 'center',     // Center content vertically
+                    minHeight: 'calc(100vh - 64px)' // Adjust based on header height
                 }}
             >
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <Box
-                        sx={{
-                            width: { xs: '100%', md: 280 },
-                            borderRadius: 3,
-                            backgroundColor: 'rgba(0,0,0,0.7)',
-                            padding: '1.5rem',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            boxShadow: 3
-                        }}
-                    >
-                        <Avatar
-                            src={profile.photo}
-                            sx={{ width: 100, height: 100, mt: 1, mb: 2 }}
-                        />
-                        <input
-                            accept="image/*"
-                            id="upload-photo"
-                            type="file"
-                            style={{ display: 'none' }}
-                            onChange={handlePhotoUpload}
-                        />
-                        <label htmlFor="upload-photo">
-                            <Button variant="contained" component="span" sx={{ mb: 2 }}>
-                                Upload Photo
-                            </Button>
-                        </label>
-                        <Typography fontWeight="bold">Name: {profile.name}</Typography>
-                        <Typography fontWeight="bold">Mobile: {profile.mobile}</Typography>
-                        <Typography fontWeight="bold">Height: {profile.height} cm</Typography>
-                        <Typography fontWeight="bold">Weight: {profile.weight} kg</Typography>
-                        <Typography fontWeight="bold">Address: {profile.address}</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
-                            <Typography fontWeight="bold">Active</Typography>
-                            <Switch checked={profile.active} color="success" onChange={handleToggleActive} />
-                        </Box>
-                        <Button
-                            variant="outlined"
-                            sx={{ mt: 2, color: '#fff', borderColor: '#fff' }}
-                            onClick={handleEditOpen}
-                        >
-                            Edit Profile
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color="error"
-                            sx={{ mt: 2, width: '100%' }}
-                            onClick={handleLogout}
-                        >
-                            Logout
-                        </Button>
-                    </Box>
-                </motion.div>
+                {/* Profile section has been removed from here */}
 
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 >
                     <Box
                         sx={{
                             display: 'grid',
                             gridTemplateColumns: {
                                 xs: '1fr',
-                                sm: 'repeat(2, 1fr)'
+                                sm: 'repeat(2, 1fr)',
+                                md: 'repeat(3, 1fr)' // Added 3 columns for larger screens
                             },
                             gap: '1.5rem',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            maxWidth: '1200px', // Limit max width
+                            width: '100%' // Ensure it takes full width within its container
                         }}
                     >
                         {cards.map((card, idx) => (
@@ -250,30 +146,6 @@ const Home = () => {
                     </Box>
                 </motion.div>
             </Box>
-
-            <Dialog open={open} onClose={handleEditClose} PaperProps={{ sx: { backgroundColor: '#1f1f1f', color: 'white' } }}>
-                <DialogTitle>Edit Profile</DialogTitle>
-                <DialogContent>
-                    {['name', 'mobile', 'height', 'weight', 'address'].map((field) => (
-                        <TextField
-                            key={field}
-                            margin="dense"
-                            name={field}
-                            label={field.charAt(0).toUpperCase() + field.slice(1)}
-                            fullWidth
-                            value={profile[field]}
-                            onChange={handleProfileChange}
-                            InputLabelProps={{ style: { color: '#bbb' } }}
-                            InputProps={{ style: { color: 'white' } }}
-                            sx={{ mb: 1 }}
-                        />
-                    ))}
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleEditClose} sx={{ color: '#bbb' }}>Cancel</Button>
-                    <Button onClick={handleEditClose} variant="contained">Save</Button>
-                </DialogActions>
-            </Dialog>
 
             <Snackbar
                 open={logoutOpen}

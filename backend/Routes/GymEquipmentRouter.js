@@ -2,18 +2,22 @@ const express = require("express");
 const router = express.Router();
 const GymEquipmentController = require("../Controllers/GymEquipmentController");
 
-// Route to book a gym equipment
+// Book gym equipment
 router.post("/book-equipment", GymEquipmentController.bookEquipment);
 
-// Route to get all equipment booked by a specific user for a specific slot
-// Example: GET /api/equipment/my-equipment/user123/slotabc
+// Get all equipment booked by a user for a specific slot
+// GET /api/equipment/my-equipment/:userId/:slotId
 router.get("/my-equipment/:userId/:slotId", GymEquipmentController.getUserBookedEquipment);
 
-// Route to get the availability of all gym equipment for a given date and start time
-// Example: GET /api/equipment/equipment-availability?date=2024-07-03&startTime=08:00
+// Get all equipment booked by a user across all slots
+// GET /api/equipment/all-my-equipment/:userId
+router.get("/all-my-equipment/:userId", GymEquipmentController.getAllUserEquipmentBookings);
+
+// Get equipment availability for a specific date and time
+// GET /api/equipment/equipment-availability?date=YYYY-MM-DD&startTime=HH:mm
 router.get("/equipment-availability", GymEquipmentController.getEquipmentAvailability);
 
-// Route to delete a gym equipment booking
+// Delete a specific equipment booking
 router.delete("/delete-equipment-booking", GymEquipmentController.deleteEquipmentBooking);
 
 module.exports = router;

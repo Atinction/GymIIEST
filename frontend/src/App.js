@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import GoToTop from './components/GoToTop';
 import Main from "./pages/Main";
+import Profile from './pages/UserProfile'; // Ensure this matches your file name, typically UserProfile.js
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -13,19 +14,12 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import BMICalculator from './pages/BMICalculator';
 import ExercisePredictor from './pages/ExercisePredictor';
-import GymEquipments from './pages/GymEquipments';
+import GymEquipments from './pages/GymEquipments'; // Assuming you have a GymEquipments.js
 import FitnessPlanner from './pages/FitnessPlanner';
 import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   const location = useLocation();
-  
-  // True for Main, Login, Signup
-  const isMinimalHeaderPage =
-    location.pathname === '/' ||
-    location.pathname === '/main' ||
-    location.pathname === '/login' ||
-    location.pathname === '/signup';
 
   // Footer visible on all except Main, Login, Signup
   const shouldShowFooter = !(
@@ -37,13 +31,14 @@ const App = () => {
 
   return (
     <>
-      {/* Header always visible */}
-      <Header isMainPage={isMinimalHeaderPage} />
+      {/* Header always visible. It handles its own display logic based on current path */}
+      <Header />
 
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/main" element={<Main />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/developers" element={<Developers />} />
@@ -51,7 +46,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/bmi" element={<BMICalculator />} />
         <Route path="/exercise-predictor" element={<ExercisePredictor />} />
-        <Route path="/equipment" element={<GymEquipments />} />
+        <Route path="/equipment" element={<GymEquipments />} /> {/* Route for GymEquipments */}
         <Route path="/fitness-planner" element={<FitnessPlanner />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
