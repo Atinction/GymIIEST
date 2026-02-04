@@ -57,9 +57,6 @@ Prerequisites
 Make sure you have Node.js and npm installed on your machine.
 
 Installation & Running the App
-Clone the repository:
-
-git clone https://github.com/Raunak-Sarkar/gymiiest.git
 
 Navigate to the project directory:
 
@@ -80,7 +77,7 @@ node index.js
 The application should now be running on your local machine.
 
 💻 Technologies Used
-Frontend: React.js
+Frontend: React.js,React icons,Matrial UI
 
 Backend: Node.js, Express.js
 
@@ -88,7 +85,9 @@ Database: MongoDB
 
 Authentication: JWT, Google OAuth
 
-Machine Learning: (Mention specific libraries if known)
+Machine Learning: KNN algo
+
+Note that : We can not deploy this app for college restrictions
 
 🧑‍💻 Contributors
 Raunak Sarkar - MERN-Stack Developer
